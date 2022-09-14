@@ -1,0 +1,10 @@
+﻿body {
+    margin:0;
+    padding:0;
+}
+.content{
+    background-color:yellow;
+    height:500px;
+    width:100%;
+    margin-left: 0px;
+}
