@@ -12,11 +12,11 @@ namespace webStore.Services.Clients.Users
         public static List<User> Login(string _username, string _password)
         {
             List<User> users = new List<User>();
-            
-            
 
-            using (SqlConnection conn = ConnectionDb.GetConnection())
-            {
+
+
+            SqlConnection conn = ConnectionDb.GetConnection();
+            
                 string sql = "select username,password from [User] where username='" + _username + "' and password='" + _password + "'";
 
                 SqlCommand sqlCommand = new SqlCommand(sql, conn);
@@ -26,21 +26,20 @@ namespace webStore.Services.Clients.Users
                 conn.Open();
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                User user;
+                
+
                 while (sqlDataReader.Read())
                 {
-                    user = new User
-                    {
-                        userName = Convert.ToString(sqlDataReader["username"]),
-                        password = Convert.ToString(sqlDataReader["password"]),
-                    };
-
+                    User user = new User();
+                    user.username = Convert.ToString(sqlDataReader["username"]);
+                    user.password = Convert.ToString(sqlDataReader["password"]);
                     users.Add(user);
                 }
                 sqlDataReader.Close();
                 ConnectionDb.Close(conn);
+            conn.Dispose();
                 return users;
-            }
+            
 
            
         }

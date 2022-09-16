@@ -19,11 +19,16 @@ namespace webStore.Views
         protected void Unnamed1_Click(object sender, EventArgs e)
         {
             List<User> users = UserService.Login(user_name.Text,password.Text);
-
-            if (users!=null)
+            
+            if (users.Count==0)
             {
+                
+            }
+            else
+            { 
                 Response.Redirect("/Views/Default.aspx");
             }
+            
         }
     }
 }

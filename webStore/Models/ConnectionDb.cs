@@ -12,7 +12,7 @@ namespace webStore.Models
         
         public static SqlConnection GetConnection()
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["webform"].ConnectionString);
+            SqlConnection conn = new SqlConnection("Data Source=THANG-PC\\SQLEXPRESS; Initial Catalog=webform; User ID=sa;Password=sa123");
             if (conn!=null)
             {
                 
@@ -23,10 +23,8 @@ namespace webStore.Models
         }
         public static void Close(SqlConnection conn)
         {
-            if (conn != null)
-            {
                 conn.Close();
-            }
+            
         }
     }
 }

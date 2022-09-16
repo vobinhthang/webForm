@@ -127,6 +127,7 @@
     <Content Include="Assets\css\login.css" />
     <Content Include="Assets\css\user\user.css" />
     <Content Include="Assets\img\panel.jpg" />
+    <Content Include="Assets\js\common.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
