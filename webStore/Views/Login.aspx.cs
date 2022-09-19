@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using webStore.Models;
+
 using webStore.Services.Clients.Users;
 
 namespace webStore.Views
@@ -14,12 +15,14 @@ namespace webStore.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            
         }
 
         protected void Unnamed1_Click(object sender, EventArgs e)
+
         {
-            List<User> users = UserService.Login(user_name.Text,password.Text);
+            
+
+            List<User> users = UserService.Login(user_name.Text.Trim(),password.Text.Trim());
             
             if (users.Count>0)
             {
@@ -36,12 +39,5 @@ namespace webStore.Views
             
             
         }
-    }
-}
-
-namespace webStore
-{
-    public class objuser
-    {
     }
 }

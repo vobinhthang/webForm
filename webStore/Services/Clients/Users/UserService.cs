@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -43,6 +44,34 @@ namespace webStore.Services.Clients.Users
             
 
            
+        }
+
+        public static bool Register(string _username,string _password)
+        {
+            
+            SqlConnection conn = ConnectionDb.GetConnection();
+
+            string sql = "insert into [User](username,password) values(@Username,@Password)";
+            conn.Open();
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            sqlCommand.Parameters.AddWithValue("@Username", _username);
+            sqlCommand.Parameters.AddWithValue("@Password", _password);
+            int rs =sqlCommand.ExecuteNonQuery();
+            if (rs > 0)
+            {
+                ConnectionDb.Close(conn);
+                conn.Dispose();
+                return true;
+            }
+            else
+            {
+                ConnectionDb.Close(conn);
+                conn.Dispose();
+                return false;
+            }
+            
         }
     }
 }
