@@ -31,13 +31,14 @@ namespace webStore.Services.Clients.Users
                 while (sqlDataReader.Read())
                 {
                     User user = new User();
-                    user.username = Convert.ToString(sqlDataReader["username"]);
-                    user.password = Convert.ToString(sqlDataReader["password"]);
+                    user.Username = Convert.ToString(sqlDataReader["username"]);
+                    user.Password = Convert.ToString(sqlDataReader["password"]);
                     users.Add(user);
                 }
+                
                 sqlDataReader.Close();
                 ConnectionDb.Close(conn);
-            conn.Dispose();
+                conn.Dispose();
                 return users;
             
 

@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     height: 800px;
+    font-family:Arial;
 }
 
 .content {
@@ -30,7 +31,7 @@ body {
         width: 25%;
         height: 75%;
         border-radius: 10px;
-        background-color: rgba(0, 84, 78,0.9);
+        background-color: rgba(0, 84, 78);
     margin-right: 0px;
 }
 
@@ -78,7 +79,7 @@ body {
     outline: none;
     text-align: center;
     font-size: 16px;
-    background-color: rgb(0, 84, 78,0.1);
+    background-color: rgb(0, 84, 78);
     color: white;
     
 }
@@ -112,4 +113,11 @@ body {
 }
 input:focus::-webkit-input-placeholder {
     color: transparent;
+}
+
+.message {
+    color: rgb(189, 0, 0);
+    text-align: center;
+    font-size:17px;
+    font-weight:bold;
 }

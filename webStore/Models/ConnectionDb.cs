@@ -15,7 +15,6 @@ namespace webStore.Models
             SqlConnection conn = new SqlConnection("Data Source=THANG-PC\\SQLEXPRESS; Initial Catalog=webform; User ID=sa;Password=sa123");
             if (conn!=null)
             {
-                
                 return conn;
 
             }

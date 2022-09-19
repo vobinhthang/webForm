@@ -19,12 +19,13 @@
                     <div class="logo-user">
                         <img src="/Assets/img/user.png"/>
                     </div>
+                    
                     <div class="user-name">
                         <div class="div">  
                             <asp:TextBox ID="user_name" runat="server" class="input" placeholder="User name"  ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="vali_user" runat="server" Font-Bold="true" ErrorMessage="*" Font-Size="20" ControlToValidate="user_name" ForeColor="Red">
-
                             </asp:RequiredFieldValidator> 
+                            
                         </div>
                     </div>
                     <br />
@@ -38,10 +39,14 @@
                     </div>
                     <div class="submit" >
                         <div class="div-button">
-                            <asp:Button  runat="server" Font-Size="18px" ForeColor="#00574f" Font-Bold="true" Text="Sign in" CssClass="button" OnClick="Unnamed1_Click" ID="btnLogin" EnableTheming="False" />
+                            
+                            <asp:Button   runat="server" Font-Size="18px" ForeColor="#00574f" Font-Bold="true" Text="Sign in" CssClass="button" OnClick="Unnamed1_Click" ID="btnLogin" EnableTheming="False" />
                         </div>
                     </div>
-                    <div class= submit" style="margin-bottom:12px">
+                    <div class="message">
+                        <asp:Literal runat="server" ID="ltrMessage"></asp:Literal>
+                    </div>
+                    <div class= "submit" style="margin-bottom:12px">
                         <div class="div-button">
                               <p class="text" style="font-size:15px;font-family:Arial;
                                         color:rgb(235, 235, 235)"> Can't remember your password? 
@@ -62,6 +67,9 @@
         </div>
 
         </form>
-        <script src="/Assets/js/common.js"></script>
+        
+        <script src="/Assets/js/common.js" >
+              
+        </script>
 </body>
 </html>

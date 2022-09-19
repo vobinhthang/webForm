@@ -14,21 +14,34 @@ namespace webStore.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             
+            
         }
 
         protected void Unnamed1_Click(object sender, EventArgs e)
         {
             List<User> users = UserService.Login(user_name.Text,password.Text);
             
-            if (users.Count==0)
+            if (users.Count>0)
             {
                 
+                Response.Redirect("/Views/Default.aspx");
+                Response.End();
             }
             else
-            { 
-                Response.Redirect("/Views/Default.aspx");
+            {
+               ltrMessage.Text = "Tài khoản hoặc mật khẩu không đúng";
+                
             }
+
+            
             
         }
+    }
+}
+
+namespace webStore
+{
+    public class objuser
+    {
     }
 }
