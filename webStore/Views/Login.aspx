@@ -25,7 +25,6 @@
                             <asp:TextBox ID="user_name" runat="server" class="input" placeholder="User name"  ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="vali_user" runat="server" Font-Bold="true" ErrorMessage="*" Font-Size="20" ControlToValidate="user_name" ForeColor="Red">
                             </asp:RequiredFieldValidator> 
-                            
                         </div>
                     </div>
                     <br />
@@ -37,15 +36,16 @@
                             </asp:RequiredFieldValidator> 
                         </div>
                     </div>
-                    <div class="submit" >
-                        <div class="div-button">
-                            
-                            <asp:Button   runat="server" Font-Size="18px" ForeColor="#00574f" Font-Bold="true" Text="Sign in" CssClass="button" OnClick="Unnamed1_Click" ID="btnLogin" EnableTheming="False" />
-                        </div>
-                    </div>
                     <div class="message">
                         <asp:Literal runat="server" ID="ltrMessage"></asp:Literal>
                     </div>
+                    <div class="submit" >
+                        <div class="div-button">
+                            
+                            <asp:Button runat="server" Font-Size="18px" ForeColor="#00574f" Font-Bold="true" Text="Sign in" CssClass="button" OnClick="Unnamed1_Click" ID="btnLogin" EnableTheming="true" />
+                        </div>
+                    </div>
+                    
                     <div class= "submit" style="margin-bottom:12px">
                         <div class="div-button">
                               <p class="text" style="font-size:15px;font-family:Arial;

@@ -12,7 +12,9 @@ namespace webStore.Models
         
         public static SqlConnection GetConnection()
         {
-            SqlConnection conn = new SqlConnection("Data Source=THANG-PC\\SQLEXPRESS; Initial Catalog=webform; User ID=sa;Password=sa123");
+            string sql = ConfigurationManager.ConnectionStrings["webForm"].ConnectionString;
+            SqlConnection conn = new SqlConnection(sql);
+            
             if (conn!=null)
             {
                 return conn;

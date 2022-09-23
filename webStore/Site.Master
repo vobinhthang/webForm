@@ -54,6 +54,7 @@
                         <li><a runat="server" href="~/Views/Admin/UserManager/AddUsers">Quản lý người dùng</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="#"><asp:Label runat="server" ID="lbHello"></asp:Label></a></li>
                     </ul>
                 </div>
             </div>

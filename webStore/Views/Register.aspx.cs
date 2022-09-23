@@ -11,23 +11,30 @@ namespace webStore.Views
 {
     public partial class Register : System.Web.UI.Page
     {
-        User user = new User();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
              
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
-        {       
-           if (!UserService.Register(user_name.Text.Trim(),password.Text.Trim()))
-           {
-                Response.Write("loi");
-                Response.End();
+        {
+            if (password.Text.Trim().Equals(confirm.Text.Trim()))
+            {
+                if (!UserService.Register(user_name.Text.Trim(), password.Text.Trim()))
+                {
+                    Response.Write("<script>alert('Đăng ký tài khoản thất bại !')</script>");
+                    
+                }
+                else
+                {
+                    Response.Write("<script>alert('Đăng ký tài khoản thành công !')</script>");
+                    
+                }
             }
             else
             {
-                Response.Write("complate");
-                Response.End();
+                ltrMessage.Text = "Mật khẩu nhập lại không đúng";
             }
 
         }

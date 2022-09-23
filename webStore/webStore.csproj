@@ -124,6 +124,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Assets\admin\assets\demo\chart-area-demo.js" />
+    <Content Include="Assets\admin\assets\demo\chart-bar-demo.js" />
+    <Content Include="Assets\admin\assets\demo\chart-pie-demo.js" />
+    <Content Include="Assets\admin\assets\demo\datatables-demo.js" />
+    <Content Include="Assets\admin\assets\img\error-404-monochrome.svg" />
+    <Content Include="Assets\admin\css\styles.css" />
+    <Content Include="Assets\admin\js\datatables-simple-demo.js" />
+    <Content Include="Assets\admin\js\scripts.js" />
     <Content Include="Assets\css\login.css" />
     <Content Include="Assets\css\register.css" />
     <Content Include="Assets\css\user\user.css" />
@@ -137,7 +145,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -150,6 +157,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="UserControls\NavbarAdmin.ascx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -180,9 +188,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Admin\Default.aspx" />
     <Content Include="Views\Admin\UserManager\AddUsers.aspx" />
     <Content Include="Views\Admin\UserManager\GetAllUser.aspx" />
-    <Content Include="Views\Default.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Register.aspx" />
     <Content Include="Web.config" />
@@ -206,18 +214,19 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\ConnectionDb.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="UserControls\NavbarAdmin.ascx.cs">
+      <DependentUpon>NavbarAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\NavbarAdmin.ascx.designer.cs">
+      <DependentUpon>NavbarAdmin.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Clients\Users\UserService.cs" />
     <Compile Include="Site.Master.cs">
@@ -241,6 +250,13 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\UserManager\AddUsers.aspx.cs">
       <DependentUpon>AddUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,13 +270,6 @@
     </Compile>
     <Compile Include="Views\Admin\UserManager\GetAllUser.aspx.designer.cs">
       <DependentUpon>GetAllUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -276,6 +285,13 @@
     <Compile Include="Views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -285,6 +301,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Shared\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

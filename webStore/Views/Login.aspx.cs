@@ -26,18 +26,16 @@ namespace webStore.Views
             
             if (users.Count>0)
             {
+                Page.Session["user_name"] = user_name.Text;
+                Response.Redirect("/Views/Admin/");
                 
-                Response.Redirect("/Views/Default.aspx");
-                Response.End();
-            }
+            }         
             else
             {
                ltrMessage.Text = "Tài khoản hoặc mật khẩu không đúng";
                 
             }
 
-            
-            
         }
     }
 }

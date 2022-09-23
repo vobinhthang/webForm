@@ -6,15 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using webStore.Models;
 
-namespace webStore
+namespace webStore.Views.Shared
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Admin : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Common.CheckLogin())
             {
-                lbHello.Text = Page.Session["user_name"].ToString();
+                lbHelloUser.Text = Page.Session["user_name"].ToString();
             }
             else
             {

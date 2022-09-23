@@ -23,17 +23,17 @@ namespace webStore.Services.Clients.Users
                 SqlCommand sqlCommand = new SqlCommand(sql, conn);
                 sqlCommand.CommandType=System.Data.CommandType.Text;
                 
-
                 conn.Open();
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                
-
-                while (sqlDataReader.Read())
+    
+                if (sqlDataReader.Read())
                 {
-                    User user = new User();
-                    user.Username = Convert.ToString(sqlDataReader["username"]);
-                    user.Password = Convert.ToString(sqlDataReader["password"]);
+                    User user = new User
+                    {
+                        Username = Convert.ToString(sqlDataReader["username"]),
+                        Password = Convert.ToString(sqlDataReader["password"])
+                    };
                     users.Add(user);
                 }
                 
@@ -42,7 +42,6 @@ namespace webStore.Services.Clients.Users
                 conn.Dispose();
                 return users;
             
-
            
         }
 

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace webStore
 {
-    public partial class _Default : Page
+    public partial class NavbarAdmin : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

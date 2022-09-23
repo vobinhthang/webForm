@@ -45,15 +45,16 @@
                             </asp:RequiredFieldValidator> 
                         </div>
                     </div>
+                    <div class="message">
+                        <asp:Literal runat="server" ID="ltrMessage"></asp:Literal>
+                    </div>
                     <div class="submit" >
                         <div class="div-button">
                             
                             <asp:Button   runat="server" Font-Size="18px" ForeColor="#050724" Font-Bold="true" Text="Sign up" CssClass="button" ID="btnRegister" EnableTheming="False" OnClick="btnRegister_Click" />
                         </div>
                     </div>
-                    <div class="message">
-                        <asp:Literal runat="server" ID="ltrMessage"></asp:Literal>
-                    </div>
+                    
                     <div class= "submit" style="margin-bottom:12px">
                         <div class="div-button">
                               <p class="text" style="font-size:15px;font-family:Arial;

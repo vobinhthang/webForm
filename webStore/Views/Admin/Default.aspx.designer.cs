@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webStore
+namespace webStore.Views.Admin
 {
 
 
-    public partial class _Default
+    public partial class Default
     {
     }
 }
