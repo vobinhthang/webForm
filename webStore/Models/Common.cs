@@ -22,6 +22,20 @@ namespace webStore.Models
 
 
         }
+        public static bool CheckPasswordOld()
+        {
+
+            if (HttpContext.Current.Session["password"] == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+        }
     }
    
 }

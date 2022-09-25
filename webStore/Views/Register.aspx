@@ -51,7 +51,7 @@
                     <div class="submit" >
                         <div class="div-button">
                             
-                            <asp:Button   runat="server" Font-Size="18px" ForeColor="#050724" Font-Bold="true" Text="Sign up" CssClass="button" ID="btnRegister" EnableTheming="False" OnClick="btnRegister_Click" />
+                            <asp:Button runat="server" Font-Size="18px" ForeColor="#050724" Font-Bold="true" Text="Sign up" CssClass="button" ID="btnRegister" EnableTheming="False" OnClick="btnRegister_Click" />
                         </div>
                     </div>
                     

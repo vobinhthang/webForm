@@ -19,24 +19,30 @@ namespace webStore.Views
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (password.Text.Trim().Equals(confirm.Text.Trim()))
-            {
-                if (!UserService.Register(user_name.Text.Trim(), password.Text.Trim()))
+            
+                if (password.Text.Trim().Equals(confirm.Text.Trim()))
                 {
-                    Response.Write("<script>alert('Đăng ký tài khoản thất bại !')</script>");
-                    
+                    if (!UserService.Register(user_name.Text.Trim(), password.Text.Trim()))
+                    {
+                    ltrMessage.Text = "";
+                    Response.Write("<script>alert('Tài khoản đăng ký đã tồn tại !')</script>");
+
+                    }
+                    else
+                    {
+                    ltrMessage.Text = "";
+                    user_name.Text = "";
+                    password.Text = "";
+                    Response.Write("<script>alert('Đăng ký tài khoản thành công !')</script>");
+                        
+                    }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Đăng ký tài khoản thành công !')</script>");
-                    
+                    ltrMessage.Text = "Mật khẩu nhập lại không đúng";
                 }
-            }
-            else
-            {
-                ltrMessage.Text = "Mật khẩu nhập lại không đúng";
-            }
-
+            
+            
         }
     }
 }

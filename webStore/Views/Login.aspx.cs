@@ -21,20 +21,21 @@ namespace webStore.Views
 
         {
             
+                List<User> users = UserService.Login(user_name.Text.Trim(), password.Text.Trim());
 
-            List<User> users = UserService.Login(user_name.Text.Trim(),password.Text.Trim());
+                if (users.Count > 0)
+                {
+                    Page.Session["user_name"] = user_name.Text;
+                    Response.Redirect("/Views/Admin/");
+
+                }
+                else
+                {
+                    ltrMessage.Text = "Tài khoản hoặc mật khẩu không đúng";
+
+                }
             
-            if (users.Count>0)
-            {
-                Page.Session["user_name"] = user_name.Text;
-                Response.Redirect("/Views/Admin/");
-                
-            }         
-            else
-            {
-               ltrMessage.Text = "Tài khoản hoặc mật khẩu không đúng";
-                
-            }
+            
 
         }
     }

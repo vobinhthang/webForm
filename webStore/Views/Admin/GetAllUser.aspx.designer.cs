@@ -7,11 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webStore.Views.Admin.UserManager
+namespace webStore.Views.Admin
 {
 
 
-    public partial class AddUsers
+    public partial class GetAllUser
     {
+
+        /// <summary>
+        /// tbUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater tbUser;
     }
 }
