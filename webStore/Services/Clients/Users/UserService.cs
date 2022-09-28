@@ -10,6 +10,67 @@ namespace webStore.Services.Clients.Users
 {
     public class UserService
     {
+        public static User GetId()
+        {
+            SqlConnection conn = ConnectionDb.GetConnection();
+
+            User user = null;
+            string sql = "select ID from [Users]";
+
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            conn.Open();
+
+           
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                user = new User
+                {
+
+                    Id = Convert.ToInt32(sqlDataReader["ID"]),
+                    
+                };
+            }
+
+            sqlDataReader.Close();
+            ConnectionDb.Close(conn);
+            conn.Dispose();
+            return user;
+        }
+        public static User GetUserById(int _id)
+        {
+            User user = null;
+
+            SqlConnection conn = ConnectionDb.GetConnection();
+
+            string sql = "select username,password from [Users] where ID=@id";
+
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            conn.Open();
+
+            sqlCommand.Parameters.AddWithValue("@id", _id);
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                user = new User
+                {
+                    
+                    Username = Convert.ToString(sqlDataReader["username"]),
+                    Password = Convert.ToString(sqlDataReader["password"])
+                };
+            }
+
+            sqlDataReader.Close();
+            ConnectionDb.Close(conn);
+            conn.Dispose();
+            return user;
+        }
         public static List<User> GetAll()
         {
             List<User> users = new List<User>();
@@ -74,8 +135,8 @@ namespace webStore.Services.Clients.Users
                 ConnectionDb.Close(conn);
                 conn.Dispose();
                 return users;
-            
-           
+                       
+
         }
 
         public static bool Register(string _username,string _password)
@@ -140,6 +201,36 @@ namespace webStore.Services.Clients.Users
 
             sqlCommand.Parameters.AddWithValue("@password", _password);
             sqlCommand.Parameters.AddWithValue("@Id", _id);
+
+            int rs = sqlCommand.ExecuteNonQuery();
+            if (rs > 0)
+            {
+                ConnectionDb.Close(conn);
+                conn.Dispose();
+                return true;
+            }
+            return false;
+        }
+
+        public static bool CreateOrUpdate(User user)
+        {
+            SqlConnection conn = ConnectionDb.GetConnection();
+            string sql = "";
+            if (user.Id != 0)
+            {
+                sql = "update [Users] set username=@username,password=@password where ID=@Id";
+            }
+            else
+            {
+                sql = "insert into [Users](username,password) values(@username,@password)";
+            }
+            conn.Open();
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            sqlCommand.Parameters.AddWithValue("@username", user.Username);
+            sqlCommand.Parameters.AddWithValue("@password", user.Password);
+            sqlCommand.Parameters.AddWithValue("@Id", user.Id);
 
             int rs = sqlCommand.ExecuteNonQuery();
             if (rs > 0)
