@@ -62,10 +62,10 @@ namespace webStore.Views.Admin
 
         protected void gvUser_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
-            User user = UserService.GetId();
-            string _id = user.Id.ToString();
-            Response.Redirect("/views/admin/updateuser?id="+_id);
+            int _id = Convert.ToInt32(gvUser.DataKeys[e.NewEditIndex].Value);
+            User user = UserService.GetUserById(_id);
+            string strid = user.Id.ToString();
+            Response.Redirect("/views/admin/updateuser?id="+ strid);
             
         }
 

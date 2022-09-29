@@ -10,43 +10,14 @@ namespace webStore.Services.Clients.Users
 {
     public class UserService
     {
-        public static User GetId()
-        {
-            SqlConnection conn = ConnectionDb.GetConnection();
-
-            User user = null;
-            string sql = "select ID from [Users]";
-
-            SqlCommand sqlCommand = new SqlCommand(sql, conn);
-            sqlCommand.CommandType = System.Data.CommandType.Text;
-
-            conn.Open();
-
-           
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-            while (sqlDataReader.Read())
-            {
-                user = new User
-                {
-
-                    Id = Convert.ToInt32(sqlDataReader["ID"]),
-                    
-                };
-            }
-
-            sqlDataReader.Close();
-            ConnectionDb.Close(conn);
-            conn.Dispose();
-            return user;
-        }
+        
         public static User GetUserById(int _id)
         {
             User user = null;
 
             SqlConnection conn = ConnectionDb.GetConnection();
 
-            string sql = "select username,password from [Users] where ID=@id";
+            string sql = "select ID,username,password from [Users] where ID=@id";
 
             SqlCommand sqlCommand = new SqlCommand(sql, conn);
             sqlCommand.CommandType = System.Data.CommandType.Text;
@@ -60,7 +31,7 @@ namespace webStore.Services.Clients.Users
             {
                 user = new User
                 {
-                    
+                    Id = Convert.ToInt32(sqlDataReader["ID"]),
                     Username = Convert.ToString(sqlDataReader["username"]),
                     Password = Convert.ToString(sqlDataReader["password"])
                 };

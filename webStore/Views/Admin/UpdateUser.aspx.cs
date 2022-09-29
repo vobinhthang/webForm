@@ -29,7 +29,9 @@ namespace webStore.Views.Admin
                 }
                 else
                 {
+
                     lbTitle.Text = "Thêm mới người dùng ";
+
                 }
             }
            
@@ -38,7 +40,7 @@ namespace webStore.Views.Admin
         protected void btnSave_Click(object sender, EventArgs e)
         {
             User user = new User();
-            
+            user.Id=queryID;
             user.Username = username.Text;
             user.Password = password.Text;
             if (UserService.CreateOrUpdate(user))

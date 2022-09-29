@@ -33,7 +33,8 @@
             
         <!-- Navbar-->
         
-            <h6 class="ms-auto " style="color:white;margin-right:50px">Xin chào <asp:Label runat="server" ID="lbHelloUser"> </asp:Label> !<a href="/views/login"> Đăng xuất</a></h6>
+            <h6 class="ms-auto " style="color:white;margin-right:50px">Xin chào <asp:Label runat="server" ID="lbHelloUser"> </asp:Label> !
+                <asp:LinkButton OnClick=""  runat="server" ID="" ></asp:LinkButton></h6>
 
         </nav>
         <div id="layoutSidenav">

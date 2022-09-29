@@ -21,5 +21,7 @@ namespace webStore.Views.Shared
                 Response.Redirect("/views/login.aspx");
             }
         }
+
+       
     }
 }
