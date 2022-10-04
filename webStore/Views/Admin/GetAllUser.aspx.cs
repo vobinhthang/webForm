@@ -69,6 +69,15 @@ namespace webStore.Views.Admin
             
         }
 
+        protected void gvUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUser.PageIndex = e.NewPageIndex;
+            List<User> users = UserService.GetAll();
+            gvUser.DataSource = users;
+            gvUser.DataBind();
+        }
+       
+        
 
 
 

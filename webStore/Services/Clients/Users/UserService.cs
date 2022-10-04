@@ -186,7 +186,7 @@ namespace webStore.Services.Clients.Users
         public static bool CreateOrUpdate(User user)
         {
             SqlConnection conn = ConnectionDb.GetConnection();
-            string sql = "";
+            string sql;
             if (user.Id != 0)
             {
                 sql = "update [Users] set username=@username,password=@password where ID=@Id";
@@ -198,15 +198,15 @@ namespace webStore.Services.Clients.Users
             conn.Open();
             SqlCommand sqlCommand = new SqlCommand(sql, conn);
             sqlCommand.CommandType = System.Data.CommandType.Text;
-
+            sqlCommand.Parameters.AddWithValue("@Id", user.Id);
             sqlCommand.Parameters.AddWithValue("@username", user.Username);
             sqlCommand.Parameters.AddWithValue("@password", user.Password);
-            sqlCommand.Parameters.AddWithValue("@Id", user.Id);
+            
 
             int rs = sqlCommand.ExecuteNonQuery();
             if (rs > 0)
             {
-                ConnectionDb.Close(conn);
+                conn.Close();
                 conn.Dispose();
                 return true;
             }

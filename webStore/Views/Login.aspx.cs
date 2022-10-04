@@ -14,7 +14,7 @@ namespace webStore.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Page.Session["user_name"] = null;
         }
 
         protected void Unnamed1_Click(object sender, EventArgs e)

@@ -8,8 +8,8 @@
             <li class="breadcrumb-item"><a href="/views/admin/">Quay lại</a></li>
             <li class="breadcrumb-item active">Quản lý người dùng</li>
         </ol>
-        <asp:Button ID="btnCreate"  runat="server" CssClass="mr-2 mb-3 btn btn-success" Text="Tạo mới" OnClick="btnCreate_Click"/> 
-        <asp:GridView CssClass="table" GridLines="None" ID="gvUser" runat ="server" EnableViewState="false" AutoGenerateColumns="false" OnRowDeleting="gvUser_RowDeleting" OnRowEditing="gvUser_RowEditing" DataKeyNames="ID" OnRowDataBound="gvUser_RowDataBound">
+        <asp:Button ID="btnCreate"   runat="server" CssClass="mr-2 mb-3 btn btn-success" Text="Tạo mới" OnClick="btnCreate_Click"/> 
+        <asp:GridView PageSize="2" OnPageIndexChanging="gvUser_PageIndexChanging" AllowPaging="True" CssClass="table" GridLines="None" ID="gvUser" runat ="server" EnableViewState="False" AutoGenerateColumns="False" OnRowDeleting="gvUser_RowDeleting" OnRowEditing="gvUser_RowEditing" DataKeyNames="ID" OnRowDataBound="gvUser_RowDataBound">
             <Columns >
                 
                 <asp:TemplateField  HeaderText="ID">
@@ -34,6 +34,7 @@
                 <asp:CommandField ShowDeleteButton="true" DeleteText="Xóa"  ButtonType="Button" ControlStyle-CssClass="btn btn-danger"  />
                 <asp:CommandField ShowEditButton="true" UpdateText="Sửa"  ButtonType="Button" ControlStyle-CssClass="btn btn-warning"  />
             </Columns>
+            <PagerSettings Mode="NumericFirstLast" PageButtonCount="3"/>
             
             <HeaderStyle CssClass="thead-dark"/>
       </asp:GridView>

@@ -211,6 +211,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Admin\AddProduct.aspx" />
     <Content Include="Views\Admin\Default.aspx" />
     <Content Include="Views\Admin\GetAllUser.aspx" />
     <Content Include="Views\Admin\UpdateUser.aspx" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
