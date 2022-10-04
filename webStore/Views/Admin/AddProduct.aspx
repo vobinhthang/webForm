@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label runat="server">Name</asp:Label>
-            <asp:TextBox runat="server"></asp:TextBox>
+            <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
         </div>
         <div>
             <asp:Label runat="server">File image</asp:Label>

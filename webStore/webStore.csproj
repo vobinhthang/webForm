@@ -158,8 +158,11 @@
     <Content Include="Assets\css\login.css" />
     <Content Include="Assets\css\register.css" />
     <Content Include="Assets\css\user\user.css" />
+    <Content Include="Assets\img\275685466_924573844827759_7545911819689795330_n.jpg" />
     <Content Include="Assets\img\backRegister.jpg" />
+    <Content Include="Assets\img\galweb-banner.jpg" />
     <Content Include="Assets\img\panel.jpg" />
+    <Content Include="Assets\img\panel2.jpg" />
     <Content Include="Assets\img\user.png" />
     <Content Include="Assets\js\common.js" />
     <Content Include="Contact.aspx" />
@@ -215,6 +218,7 @@
     <Content Include="Views\Admin\Default.aspx" />
     <Content Include="Views\Admin\GetAllUser.aspx" />
     <Content Include="Views\Admin\UpdateUser.aspx" />
+    <Content Include="Views\GetProduct.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Register.aspx" />
     <Content Include="Web.config" />
@@ -243,7 +247,9 @@
     </Compile>
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\ConnectionDb.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Services\Clients\Users\ProductService.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +314,13 @@
     </Compile>
     <Compile Include="Views\Admin\UpdateUser.aspx.designer.cs">
       <DependentUpon>UpdateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetProduct.aspx.cs">
+      <DependentUpon>GetProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GetProduct.aspx.designer.cs">
+      <DependentUpon>GetProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
