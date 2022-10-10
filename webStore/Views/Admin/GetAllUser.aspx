@@ -8,11 +8,19 @@
             <li class="breadcrumb-item"><a href="/views/admin/">Quay lại</a></li>
             <li class="breadcrumb-item active">Quản lý người dùng</li>
         </ol>
-        <asp:Button ID="btnCreate"   runat="server" CssClass="mr-2 mb-3 btn btn-success" Text="Tạo mới" OnClick="btnCreate_Click"/> 
-        <asp:GridView PageSize="2" OnPageIndexChanging="gvUser_PageIndexChanging" AllowPaging="True" CssClass="table" GridLines="None" ID="gvUser" runat ="server" EnableViewState="False" AutoGenerateColumns="False" OnRowDeleting="gvUser_RowDeleting" OnRowEditing="gvUser_RowEditing" DataKeyNames="ID" OnRowDataBound="gvUser_RowDataBound">
+        <asp:Button ID="btnCreate"   runat="server" CssClass="mr-4 mb-3 btn btn-success" Text="Tạo mới" OnClick="btnCreate_Click"/> 
+        <asp:DropDownList  AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged"  SelectMethod="ItemsInt" Width="100px" runat="server" ID="ddlPageSize">
+
+        </asp:DropDownList>
+           
+            <span style="margin-right:500px">thông tin trên một trang</span>
+            
+             <asp:TextBox  AutoPostBack="true" OnTextChanged="tbSearch_TextChanged" placeholder="Tìm kiếm"  runat="server" ID="tbSearch"></asp:TextBox>
+
+            <asp:GridView OnSorting="gvUser_Sorting"  AllowSorting="true" OnPageIndexChanging="gvUser_PageIndexChanging"  PageSize="5" AllowPaging="True" CssClass="table" GridLines="None" ID="gvUser" runat ="server" EnableViewState="False" AutoGenerateColumns="False" OnRowDeleting="gvUser_RowDeleting" OnRowEditing="gvUser_RowEditing" DataKeyNames="ID" OnRowDataBound="gvUser_RowDataBound">
             <Columns >
                 
-                <asp:TemplateField  HeaderText="ID">
+                <asp:TemplateField  HeaderText="ID"  SortExpression="ID">
                     
                     <ItemTemplate >  
                     <asp:Label runat="server" ID="lbID" Text='<%#:Eval("ID")%>' Visible="false"></asp:Label>
@@ -20,7 +28,7 @@
                       <%#Eval("ID")%>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField  HeaderText="Tài khoản">
+                <asp:TemplateField  HeaderText="Tài khoản" >
                     <ItemTemplate>  
                           <a href="/views/admin/updateuser?id=<%#Eval("ID") %>"> <%#Eval("username") %></a>
                     </ItemTemplate>
@@ -33,11 +41,15 @@
               
                 <asp:CommandField ShowDeleteButton="true" DeleteText="Xóa"  ButtonType="Button" ControlStyle-CssClass="btn btn-danger"  />
                 <asp:CommandField ShowEditButton="true" UpdateText="Sửa"  ButtonType="Button" ControlStyle-CssClass="btn btn-warning"  />
+            
+               
             </Columns>
             <PagerSettings Mode="NumericFirstLast" PageButtonCount="3"/>
             
             <HeaderStyle CssClass="thead-dark"/>
+
       </asp:GridView>
+           
         <%--<asp:Repeater id="tbUser" runat="server" OnItemCommand="tbUser_ItemCommand" OnItemDataBound="tbUser_ItemDataBound">
           <HeaderTemplate>
              <table class="table">

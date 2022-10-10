@@ -13,7 +13,15 @@ namespace webStore.Views.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                List<Product> products = ProductService.GetAll();
+                DdlProduct.DataSource = products;
+                DdlProduct.DataTextField = "Name";
+                DdlProduct.DataValueField = "Id";
+                DdlProduct.DataBind();
+                DdlProduct.Items.Insert(0, "asv");
+            }
         }
 
         protected void Unnamed5_Click(object sender, EventArgs e)
@@ -32,15 +40,19 @@ namespace webStore.Views.Admin
             {
                 message.Text = "Khong co file nao";
             }
-
-            
-            
-            Product product = new Product();
-
-            product.Name = tbName.Text;
-            product.Thumbnail = imageFolderPath + imageFileName;
+            Product product = new Product
+            {
+                Name = tbName.Text,
+                Thumbnail = imageFolderPath + imageFileName
+            };
 
             ProductService.Create(product);
         }
+
+        protected void DdlProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbMessages.Text = "hahahahha";
+        }
+
     }
 }

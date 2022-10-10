@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,11 +18,49 @@ namespace webStore.Views.Admin
         {
             if (!IsPostBack)
             {
-                List<User> users = UserService.GetAll();
-                gvUser.DataSource = users;
+
+                DataTable dt = UserService.TableDataAll();
+                gvUser.DataSource = dt;
                 gvUser.DataBind();
+                ViewState["data"] = dt;
+                ViewState["sort"] = "Asc";
             }
         }
+        public List<int> ItemsInt()
+        {
+            List<int> list = new List<int>();
+
+            for (int i = 5; i <= 20;i+=5 )
+            {
+                list.Add(i);
+                
+            }
+
+            return list;
+        }
+        protected void gvUser_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            DataTable dtrslt = (DataTable)ViewState["data"];
+            if (dtrslt.Rows.Count > 0)
+            {
+                if (Convert.ToString(ViewState["sort"]) == "Asc")
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
+                    ViewState["sort"] = "Desc";
+                    
+                }
+                else
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
+                    ViewState["sort"] = "Asc";
+                }
+                gvUser.DataSource = dtrslt;
+                gvUser.DataBind();
+
+
+            }
+        }
+
 
         protected void gvUser_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -71,13 +110,58 @@ namespace webStore.Views.Admin
 
         protected void gvUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvUser.PageIndex = e.NewPageIndex;
+            if (string.IsNullOrEmpty(tbSearch.Text.ToString())) { 
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
             List<User> users = UserService.GetAll();
+            gvUser.PageIndex = e.NewPageIndex;
+            gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+            else
+            {
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+                string _search = tbSearch.Text.ToString();
+                List<User> users = UserService.SearchUser(_search);
+                gvUser.PageIndex = e.NewPageIndex;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+        }
+
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbSearch.Text.ToString()))
+            {
+                List<User> users = UserService.GetAll();
+                gvUser.PageSize=Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+            
+                gvUser.PageIndex = 0;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+            else
+            {
+                string _search = tbSearch.Text.ToString();
+                List<User> users = UserService.SearchUser(_search);
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+
+                gvUser.PageIndex = 0;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+
+        }
+
+        protected void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            string _search = tbSearch.Text.ToString();
+            List<User> users = UserService.SearchUser(_search);
+           
             gvUser.DataSource = users;
             gvUser.DataBind();
         }
-       
-        
+
 
 
 

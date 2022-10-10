@@ -17,6 +17,8 @@
             <asp:FileUpload ID="file" runat="server"  />
             
         </div>
+        <asp:DropDownList runat="server" ID="DdlProduct" OnSelectedIndexChanged="DdlProduct_SelectedIndexChanged" ></asp:DropDownList>
+        <asp:Label ID="lbMessages" runat="server" Text="abc"></asp:Label>
         <div>
             <asp:Button runat="server" Text="Upload" OnClick="Unnamed5_Click"/>
         </div>

@@ -42,6 +42,16 @@ namespace webStore.Services.Clients.Users
             conn.Dispose();
             return user;
         }
+        public static DataTable TableDataAll()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = ConnectionDb.GetConnection();
+            string sql = "select ID,username,password from [Users]";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, conn);
+            dataAdapter.Fill(dt);
+            return dt;
+
+        }
         public static List<User> GetAll()
         {
             List<User> users = new List<User>();
@@ -211,6 +221,36 @@ namespace webStore.Services.Clients.Users
                 return true;
             }
             return false;
+        }
+
+        public static List<User> SearchUser(string _search)
+        {
+            List<User> users = new List<User>();
+            SqlConnection conn = ConnectionDb.GetConnection();
+            string sql = "select ID, username from [Users] where( ID like '%"+ _search + "%' or username like '%" + _search + "%' )";
+            
+            conn.Open();
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                User user = new User
+                {
+                    Id = Convert.ToInt32(sqlDataReader["ID"]),
+                    Username = Convert.ToString(sqlDataReader["username"]),
+                };
+                users.Add(user);
+            }
+
+            sqlDataReader.Close();
+            conn.Close();
+            conn.Dispose();
+            return users;
+
         }
     }
 }
