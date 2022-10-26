@@ -110,18 +110,41 @@ namespace webStore.Views.Admin
 
         protected void gvUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            List<User> users;
             if (string.IsNullOrEmpty(tbSearch.Text.ToString())) { 
                 gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
-            List<User> users = UserService.GetAll();
-            gvUser.PageIndex = e.NewPageIndex;
-            gvUser.DataSource = users;
+                users = UserService.GetAll();
+                gvUser.PageIndex = e.NewPageIndex;
+                gvUser.DataSource = users;
                 gvUser.DataBind();
             }
             else
             {
                 gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
                 string _search = tbSearch.Text.ToString();
-                List<User> users = UserService.SearchUser(_search);
+                users = UserService.SearchUser(_search);
+                gvUser.PageIndex = e.NewPageIndex;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+            
+            string query = ddlSortUsername.SelectedItem.ToString();
+            if (query.Equals("Không"))
+            {
+                users = UserService.GetAll();
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+
+                gvUser.PageIndex = e.NewPageIndex;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+
+
+            }
+            else
+            {
+                users = UserService.SortUsername(query);
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+
                 gvUser.PageIndex = e.NewPageIndex;
                 gvUser.DataSource = users;
                 gvUser.DataBind();
@@ -161,6 +184,36 @@ namespace webStore.Views.Admin
             gvUser.DataSource = users;
             gvUser.DataBind();
         }
+
+        protected void ddlSortUsername_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<User> users;
+            string query = ddlSortUsername.SelectedItem.ToString();
+            if (query.Equals("Không"))
+            {
+                users = UserService.GetAll();
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+
+                gvUser.PageIndex = 0;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+                
+
+            }
+            else
+            {
+                users = UserService.SortUsername(query);
+                gvUser.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.ToString());
+
+                gvUser.PageIndex = 0;
+                gvUser.DataSource = users;
+                gvUser.DataBind();
+            }
+           
+            
+        }
+
+
 
 
 

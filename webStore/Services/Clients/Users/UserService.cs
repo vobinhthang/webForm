@@ -252,5 +252,42 @@ namespace webStore.Services.Clients.Users
             return users;
 
         }
+
+        public static List<User> SortUsername(string query)
+        {
+            List<User> users = new List<User>();
+
+            SqlConnection conn = ConnectionDb.GetConnection();
+
+            string sql = string.Empty;
+            if(query.Equals("Tăng dần"))
+            {
+                sql = "select ID,username,password from [Users] order by username ASC";
+            }
+            else if(query.Equals("Giảm dần"))
+            {
+                sql = "select ID,username,password from [Users] order by username DESC";
+            }
+            conn.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(sql, conn);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            while (sqlDataReader.Read())
+            {
+                User user = new User { 
+                    Id=Convert.ToInt32(sqlDataReader["ID"]),
+                    Username=Convert.ToString(sqlDataReader["username"]),
+                    Password=Convert.ToString(sqlDataReader["password"]),
+                };
+                users.Add(user);
+            }
+
+            sqlDataReader.Close();
+            conn.Close();
+            conn.Dispose();
+            return users;
+        }
     }
 }
